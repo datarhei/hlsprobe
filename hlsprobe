@@ -90,7 +90,10 @@ class CupertinoProbe:
                         while self.playlistq.full():
                             self.log.debug("Playlist queue is full (%d). Probably you need to increase number of stream probers. Check `workers/stream-probers` value." % self.playlistq.qsize())
                             time.sleep(3)
-                        self.playlistq.put((group, name, "%s/%s" % (baseuri, stream.uri)))
+                        if stream.uri.startswith("http"):
+                            self.playlistq.put((group, name, stream.uri))
+                        else:
+                            self.playlistq.put((group, name, "%s/%s" % (baseuri, stream.uri)))
                 else:
                     if not playlist.segments:
                         self.err("empty", "chunklist", group, name, uri)
