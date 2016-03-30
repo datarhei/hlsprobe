@@ -1,0 +1,28 @@
+# mode:yaml
+# Sample config for the `hlsprobe`
+#
+# Configuration file in YAML format (http://yaml.org).
+# In current version of hlsprobe all sections of config file must be exist.
+
+# Define streams define URIs to streams
+#
+streams:
+  ##STREAMS_URL##
+workers:
+  stream-probers: ##WORKERS_STREAM_PROBERS##
+  media-probers: ##WORKERS_MEDIA_PROBERS##
+notify:
+  report-threshold: ##NOTIFY_REPORT_THRESHOLD##
+  addresses: ##NOTIFY_ADDRESSES##
+  author: ##NOTIFY_AUTHOR##
+  subject: HLS probe on $HOSTNAME alert
+sleep:
+  playlist-open: ##SLEEP_PLAYLIST_OPEN##
+  streams-list: ##SLEEP_STREAM_LIST##
+timeout:
+  target-duration: ##TIMEOUT_TARGET_DURATION##
+  read: ##TIMEOUT_READ##
+  keep-error: ##KEEP_ERROR##
+  spam: ##TIMEOUT_SPAM##
+mode:
+  one-segment: ##MODE_ONE_SEGMENT##
